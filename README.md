@@ -34,7 +34,7 @@ From the baseline CFN for self-managed node group, below functions are added;
     ```
 - Before running this CloudFormation, you have to place lambda_function.zip file (compress lambda_function.py in lambda folder) to your S3 bucket.
 - During CFN stack creation
-    - Select primary private subnet for the parameter of `Subets` where the primary K8s networking interface would be connected to. 
+    - Select primary private subnet for the parameter of `Subnets` where the primary K8s networking interface would be connected to. 
     - Select 2ndary (Multus) subnet for the parameter of `MultusSubnet1/2/3/4..` where multus ENIs will be connected to.
 - After completion of stack creation, update aws-auth-cn.yaml with Node Role ARN in Output section of the CloudFormation result, to make workernodes to join the your EKS cluster. 
 - Once all workernodes come up with multiple ENIs as intended (please make it sure each multus subnet ENI has to be with "no_manage" tag) and also workernodes successfully join to your EKS cluster, then you can deploy an application that is with multus-cni network definition in following steps. 
